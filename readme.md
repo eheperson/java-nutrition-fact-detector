@@ -5,28 +5,37 @@ This Java project simulates a nutrition fact detector system, demonstrating CRUD
 >This repository created on behalf of *IYTE SEDS519 – Software Designs Pattern* Lecture *2024 Spring* semester project
 
 ## Usage (TODO)
-Once the application is running, follow the on-screen instructions to interact with the nutrition facts system. 
-
-The menu provides options to add, retrieve, update, and delete nutrition facts, as well as listing all available entries.
+```bash
+cd nutritionfact # where your pom.xml file is located
+mvn clean compile
+mvn clean install
+java -jar target/nutritionfact-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
 
 ## Project structure
 ```
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── app/
-│   │   │   │   └── Main.java
-│   │   │   ├── dao/
-│   │   │   │   ├── INutritionDao.java
-│   │   │   │   └── NutritionDaoImpl.java
-│   │   │   ├── model/
-│   │   │   │   └── Nutrition.java
-│   │   │   └── util/
-│   │   │       └── DbConnection.java
-│   └── resources/
-│       └── db/
-│           └── schema.sql
+├── nutritionfact
+│   ├── src/
+│   │   ├── main/
+│   │   │   └── java/com/localhost/nutritionfact/
+│   │   │       ├── app/
+│   │   │       │   └── Main.java
+│   │   │       ├── dao/
+│   │   │       │   ├── INutritionDao.java
+│   │   │       │   └── NutritionDaoImp.java
+│   │   │       ├── model/
+│   │   │       │   └── Nutrition.java
+│   │   │       └──  db/
+│   │   │           ├── DbConnection.java
+│   │   │           └── DbInit.java
+│   │   └── resources/
+│   │       └── db/
+│   │           ├──  db.properties
+│   │           └── schema.sql
+│   └── pom.xml
+├── .gitignore
 ├── docker-compose.yml
+├── SEDS519_HW1_DUE_27_MARCH.pdf
 └── readme.md
 ```
 
@@ -108,3 +117,12 @@ mvn exec:java -Dexec.mainClass="app.Main"
 
 ### Eclipse Issues: 
 - Ensure you have imported the project correctly and set up the build path to include the necessary JDK.
+
+
+--- 
+
+## Maven Commands:
+### Project initialized with this command
+```bash
+ mvn archetype:generate -DgroupId=com.localhost.nutritionfact -DartifactId=nutritionfact -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+```
