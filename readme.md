@@ -52,6 +52,15 @@ docker run --name mysql-nutrition -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_D
 docker-compose up -d
 ```
 
+##### MySql DB Connection:
+```
+host: localhost
+port: 3306
+username: root
+password: rootpassword
+database: nutritiondb
+```
+
 ##### Manually or Remote Database
 - Ensure MySQL Server is installed and running on your system or accessible remotely.
 - Create a database named nutritiondb.
