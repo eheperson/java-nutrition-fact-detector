@@ -1,0 +1,44 @@
+@startuml
+
+class Main {
+    -static scanner: Scanner
+    -static nutritionDao: INutritionDao
+    +static main(args: String[]): void
+    -static addNutrition(): void
+    -static readNutrition(): void
+    -static listAllNutritions(): void
+    -static updateNutrition(): void
+    -static deleteNutrition(): void
+}
+
+class Nutrition {
+    -id: int
+    -title: String
+    -description: String
+    -sourceType: String
+    -sourceDetails: String
+    +Nutrition(id: int, title: String, description: String, sourceType: String, sourceDetails: String)
+}
+
+interface INutritionDao {
+    +addNutrition(nutrition: Nutrition): void
+    +getNutrition(id: int): Nutrition
+    +getAllNutritions(): List<Nutrition>
+    +updateNutrition(nutrition: Nutrition): void
+    +deleteNutrition(id: int): void
+}
+
+class NutritionDaoImp {
+    +addNutrition(nutrition: Nutrition): void
+    +getNutrition(id: int): Nutrition
+    +getAllNutritions(): List<Nutrition>
+    +updateNutrition(nutrition: Nutrition): void
+    +deleteNutrition(id: int): void
+}
+
+Main --> Nutrition
+Main --> INutritionDao
+NutritionDaoImp ..|> INutritionDao
+NutritionDaoImp --> Nutrition
+
+@enduml
