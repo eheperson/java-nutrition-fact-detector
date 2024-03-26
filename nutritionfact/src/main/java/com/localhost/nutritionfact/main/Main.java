@@ -25,7 +25,7 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     addNutrition();
@@ -52,17 +52,7 @@ public class Main {
     }
 
     private static void addNutrition() {
-        System.out.println("\n[Add a new nutrition fact]");
-        System.out.print("Title: ");
-        String title = scanner.nextLine();
-        System.out.print("Description: ");
-        String description = scanner.nextLine();
-        System.out.print("Source Type (Video, BlogArticle, MedicalInfo): ");
-        String sourceType = scanner.nextLine();
-        System.out.print("Source Details: ");
-        String sourceDetails = scanner.nextLine();
-
-        Nutrition nutrition = new Nutrition(0, title, description, sourceType, sourceDetails);
+        Nutrition nutrition = getNutritionDetailsFromUser();
         nutritionDao.addNutrition(nutrition);
         System.out.println("Nutrition fact added successfully!");
     }
@@ -115,5 +105,17 @@ public class Main {
         int id = scanner.nextInt();
         nutritionDao.deleteNutrition(id);
         System.out.println("Nutrition fact deleted successfully.");
+    }
+
+    private static Nutrition getNutritionDetailsFromUser() {
+        System.out.print("Title: ");
+        String title = scanner.nextLine();
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+        System.out.print("Source Type (Video, BlogArticle, MedicalInfo): ");
+        String sourceType = scanner.nextLine();
+        System.out.print("Source Details: ");
+        String sourceDetails = scanner.nextLine();
+        return new Nutrition(0, title, description, sourceType, sourceDetails);
     }
 }

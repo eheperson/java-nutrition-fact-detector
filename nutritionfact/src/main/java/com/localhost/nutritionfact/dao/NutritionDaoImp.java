@@ -11,7 +11,7 @@ public class NutritionDaoImp implements INutritionDao {
 
     @Override
     public void addNutrition(Nutrition nutrition) {
-        String sql = "INSERT INTO nutrition (title, description, source_type, source_details) VALUES (?, ?, ?, ?)";
+                String sql = "INSERT INTO nutrition (title, description, source_type, source_details) VALUES (?, ?, ?, ?)";
         try (Connection conn = DbConnection.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nutrition.getTitle());
@@ -74,25 +74,38 @@ public class NutritionDaoImp implements INutritionDao {
         try (Connection conn = DbConnection.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nutrition.getTitle());
-            pstmt.setString(2, nutrition.getDescription());
-            pstmt.setString(3, nutrition.getSourceType());
-            pstmt.setString(4, nutrition.getSourceDetails());
-            pstmt.setInt(5, nutrition.getNutritionId());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
+                pstmt.setString(2, nutrition.getDescription());
+                pstmt.setString(3, nutrition.getSourceType());
+                pstmt.setString(4, nutrition.getSourceDetails());
+                pstmt.setInt(5, nutrition.getNutritionId());
+                pstmt.executeUpdate();
+                        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
-    public void deleteNutrition(int id) {
+    public boolean deleteNutrition(int id) {
         String sql = "DELETE FROM nutrition WHERE nutrition_id = ?";
         try (Connection conn = DbConnection.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
-            pstmt.executeUpdate();
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return false;
         }
+    }
+    
+    
+    private Nutrition extractNutritionFromResultSet(ResultSet rs) throws SQLException {
+        Nutrition nutrition = new Nutrition();
+        nutrition.setNutritionId(rs.getInt("nutrition_id"));
+        nutrition.setTitle(rs.getString("title"));
+        nutrition.setDescription(rs.getString("description"));
+        nutrition.setSourceType(rs.getString("source_type"));
+        nutrition.setSourceDetails(rs.getString("source_details"));
+        return nutrition;
     }
 }

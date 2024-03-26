@@ -17,5 +17,5 @@ public interface INutritionDao {
     void updateNutrition(Nutrition nutrition);
 
     // Deletes a Nutrition object from the database by its ID
-    void deleteNutrition(int id);
+    boolean deleteNutrition(int id);
 }
