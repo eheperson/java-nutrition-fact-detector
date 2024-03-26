@@ -1,26 +1,58 @@
 @startuml
 
-class Main {
-    -static scanner: Scanner
-    -static nutritionDao: INutritionDao
-    +static main(args: String[]): void
-    -static addNutrition(): void
-    -static readNutrition(): void
-    -static listAllNutritions(): void
-    -static updateNutrition(): void
-    -static deleteNutrition(): void
+package "com.localhost.nutritionfact.db" {
+    class "DbConnection" {
+        -static instance: DbConnection
+        -connection: Connection
+        -DbConnection(): void
+        +static getInstance(): DbConnection
+        +getConnection(): Connection
+        -loadProperties(): Properties
+    }
+
+    class "DbInit" {
+        +static initializeDatabase(): void
+        -static loadSqlFromFile(path: String): String
+        -static executeSql(sql: String): void
+    }
 }
 
-class Nutrition {
-    -id: int
-    -title: String
-    -description: String
-    -sourceType: String
-    -sourceDetails: String
-    +Nutrition(id: int, title: String, description: String, sourceType: String, sourceDetails: String)
+package "com.localhost.nutritionfact.model" {
+    class "Nutrition" {
+        -nutritionId: int
+        -title: String
+        -description: String
+        -sourceType: String
+        -sourceDetails: String
+        +Nutrition(nutritionId: int, title: String, description: String, sourceType: String, sourceDetails: String)
+        +getNutritionId(): int
+        +setNutritionId(nutritionId: int): void
+        +getTitle(): String
+        +setTitle(title: String): void
+        +getDescription(): String
+        +setDescription(description: String): void
+        +getSourceType(): String
+        +setSourceType(sourceType: String): void
+        +getSourceDetails(): String
+        +setSourceDetails(sourceDetails: String): void
+        +toString(): String
+    }
 }
 
-interface INutritionDao {
+package "com.localhost.nutritionfact.main" {
+    class "Main" {
+        -static scanner: Scanner
+        -static nutritionDao: INutritionDao
+        +static main(args: String[]): void
+        -static addNutrition(): void
+        -static readNutrition(): void
+        -static listAllNutritions(): void
+        -static updateNutrition(): void
+        -static deleteNutrition(): void
+    }
+}
+
+interface "INutritionDao" {
     +addNutrition(nutrition: Nutrition): void
     +getNutrition(id: int): Nutrition
     +getAllNutritions(): List<Nutrition>
@@ -28,7 +60,7 @@ interface INutritionDao {
     +deleteNutrition(id: int): void
 }
 
-class NutritionDaoImp {
+class "NutritionDaoImp" {
     +addNutrition(nutrition: Nutrition): void
     +getNutrition(id: int): Nutrition
     +getAllNutritions(): List<Nutrition>
