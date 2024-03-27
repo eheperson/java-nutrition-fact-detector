@@ -1,6 +1,7 @@
 package com.localhost.nutritionfact.dao;
 
 import com.localhost.nutritionfact.model.Nutrition;
+
 import java.util.List;
 
 public interface INutritionDao {
@@ -14,7 +15,7 @@ public interface INutritionDao {
     List<Nutrition> getAllNutritions();
 
     // Updates an existing Nutrition object in the database
-    void updateNutrition(Nutrition nutrition);
+    boolean updateNutrition(Nutrition nutrition);
 
     // Deletes a Nutrition object from the database by its ID
     boolean deleteNutrition(int id);

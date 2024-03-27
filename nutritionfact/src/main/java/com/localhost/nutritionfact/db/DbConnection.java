@@ -37,9 +37,33 @@ public class DbConnection {
         return connection;
     }
 
+    public void openConnection() throws SQLException {
+        try {
+            Properties prop = loadProperties();
+            String url = prop.getProperty("db.url");
+            String user = prop.getProperty("db.user");
+            String password = prop.getProperty("db.password");
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            this.connection = DriverManager.getConnection(url, user, password);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Database Connection Creation Failed : " + ex.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void closeConnection() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private Properties loadProperties() {
-        // String classpath = System.getProperty("java.class.path");
-        // System.out.println("Current Classpath: " + classpath);
         try (InputStream input = DbConnection.class.getClassLoader().getResourceAsStream("db/db.properties")) {
             Properties prop = new Properties();
             if (input == null) {

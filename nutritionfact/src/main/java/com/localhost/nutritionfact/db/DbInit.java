@@ -33,9 +33,11 @@ public class DbInit {
     }
 
     private static void executeSql(String sql) {
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             Statement stmt = conn.createStatement()) {
-            // Splitting the SQL statements by semicolon
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            stmt = conn.createStatement();
             String[] statements = sql.split(";");
             for (String statement : statements) {
                 if (!statement.trim().isEmpty()) {
@@ -44,6 +46,19 @@ public class DbInit {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            close(stmt);
+            close(conn);
+        }
+    }
+
+    private static void close(AutoCloseable resource) {
+        if (resource != null) {
+            try {
+                resource.close();
+            } catch (Exception e) {
+                System.out.println("Failed to close resource: " + e.getMessage());
+            }
         }
     }
 }

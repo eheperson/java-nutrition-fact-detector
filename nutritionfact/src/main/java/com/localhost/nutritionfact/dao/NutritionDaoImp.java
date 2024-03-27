@@ -11,9 +11,12 @@ public class NutritionDaoImp implements INutritionDao {
 
     @Override
     public void addNutrition(Nutrition nutrition) {
-                String sql = "INSERT INTO nutrition (title, description, source_type, source_details) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        String sql = "INSERT INTO nutrition (title, description, source_type, source_details) VALUES (?, ?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nutrition.getTitle());
             pstmt.setString(2, nutrition.getDescription());
             pstmt.setString(3, nutrition.getSourceType());
@@ -21,6 +24,8 @@ public class NutritionDaoImp implements INutritionDao {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            close(conn, pstmt, null);
         }
     }
 
@@ -28,20 +33,21 @@ public class NutritionDaoImp implements INutritionDao {
     public Nutrition getNutrition(int id) {
         String sql = "SELECT * FROM nutrition WHERE nutrition_id = ?";
         Nutrition nutrition = null;
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             if (rs.next()) {
-                nutrition = new Nutrition();
-                nutrition.setNutritionId(rs.getInt("nutrition_id"));
-                nutrition.setTitle(rs.getString("title"));
-                nutrition.setDescription(rs.getString("description"));
-                nutrition.setSourceType(rs.getString("source_type"));
-                nutrition.setSourceDetails(rs.getString("source_details"));
+                nutrition = extractNutritionFromResultSet(rs);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            close(conn, pstmt, rs);
         }
         return nutrition;
     }
@@ -50,54 +56,66 @@ public class NutritionDaoImp implements INutritionDao {
     public List<Nutrition> getAllNutritions() {
         List<Nutrition> nutritions = new ArrayList<>();
         String sql = "SELECT * FROM nutrition";
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Nutrition nutrition = new Nutrition();
-                nutrition.setNutritionId(rs.getInt("nutrition_id"));
-                nutrition.setTitle(rs.getString("title"));
-                nutrition.setDescription(rs.getString("description"));
-                nutrition.setSourceType(rs.getString("source_type"));
-                nutrition.setSourceDetails(rs.getString("source_details"));
+                Nutrition nutrition = extractNutritionFromResultSet(rs);
                 nutritions.add(nutrition);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            close(conn, stmt, rs);
         }
         return nutritions;
     }
 
     @Override
-    public void updateNutrition(Nutrition nutrition) {
+    public boolean updateNutrition(Nutrition nutrition) {
         String sql = "UPDATE nutrition SET title = ?, description = ?, source_type = ?, source_details = ? WHERE nutrition_id = ?";
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nutrition.getTitle());
-                pstmt.setString(2, nutrition.getDescription());
-                pstmt.setString(3, nutrition.getSourceType());
-                pstmt.setString(4, nutrition.getSourceDetails());
-                pstmt.setInt(5, nutrition.getNutritionId());
-                pstmt.executeUpdate();
-                        } catch (SQLException e) {
+            pstmt.setString(2, nutrition.getDescription());
+            pstmt.setString(3, nutrition.getSourceType());
+            pstmt.setString(4, nutrition.getSourceDetails());
+            pstmt.setInt(5, nutrition.getNutritionId());
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return false;
+        } finally {
+            close(conn, pstmt, null);
         }
     }
 
     @Override
     public boolean deleteNutrition(int id) {
         String sql = "DELETE FROM nutrition WHERE nutrition_id = ?";
-        try (Connection conn = DbConnection.getInstance().getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = DbConnection.getInstance().getConnection();
+            pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id);
             int affectedRows = pstmt.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
+        } finally {
+            close(conn, pstmt, null);
         }
     }
-    
     
     private Nutrition extractNutritionFromResultSet(ResultSet rs) throws SQLException {
         Nutrition nutrition = new Nutrition();
@@ -107,5 +125,16 @@ public class NutritionDaoImp implements INutritionDao {
         nutrition.setSourceType(rs.getString("source_type"));
         nutrition.setSourceDetails(rs.getString("source_details"));
         return nutrition;
+    }
+
+    // Utility method to close resources
+    private void close(Connection conn, Statement stmt, ResultSet rs) {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            System.out.println("Error closing resources: " + e.getMessage());
+        }
     }
 }
