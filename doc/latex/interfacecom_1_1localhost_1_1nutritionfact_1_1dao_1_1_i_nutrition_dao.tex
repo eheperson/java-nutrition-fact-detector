@@ -1,0 +1,144 @@
+\doxysection{com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao Interface Reference}
+\hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao}{}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao}\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+Inheritance diagram for com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a71c214de8e761bdf68bffc8c83e91114}{add\+Nutrition}} (\mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} nutrition)
+\begin{DoxyCompactList}\small\item\em Adds a new Nutrition object to the database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a0672f396e670fc7b4ee94f5629581b39}{get\+Nutrition}} (int id)
+\begin{DoxyCompactList}\small\item\em Retrieves a Nutrition object by its ID from the database. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} $>$ \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ad5a8dd8f2314239e70488a91ce53ca1c}{get\+All\+Nutritions}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all Nutrition objects from the database. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a5dfe0df515940df56bbd898018bf8cb8}{update\+Nutrition}} (\mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} nutrition)
+\begin{DoxyCompactList}\small\item\em Updates an existing Nutrition object in the database. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ac7d35cbe4d58f1cbf6fb1ed193498f6f}{delete\+Nutrition}} (int id)
+\begin{DoxyCompactList}\small\item\em Deletes a Nutrition object from the database by its ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a71c214de8e761bdf68bffc8c83e91114}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a71c214de8e761bdf68bffc8c83e91114} 
+\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}!addNutrition@{addNutrition}}
+\index{addNutrition@{addNutrition}!com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+\doxysubsubsection{\texorpdfstring{addNutrition()}{addNutrition()}}
+{\footnotesize\ttfamily boolean com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao.\+add\+Nutrition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}}}]{nutrition }\end{DoxyParamCaption})}
+
+
+
+Adds a new Nutrition object to the database. 
+
+This method inserts a new Nutrition object into the database. It takes a Nutrition object as a parameter containing the details of the nutrition to be added. The method returns true if the insertion was successful, or false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nutrition} & The Nutrition object to be added to the database. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the nutrition was added successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1dao_1_1_nutrition_dao_imp_af49e28dc11aa9641b53fe97d3fe8bccf}{com.\+localhost.\+nutritionfact.\+dao.\+Nutrition\+Dao\+Imp}}.
+
+\Hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ac7d35cbe4d58f1cbf6fb1ed193498f6f}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ac7d35cbe4d58f1cbf6fb1ed193498f6f} 
+\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}!deleteNutrition@{deleteNutrition}}
+\index{deleteNutrition@{deleteNutrition}!com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+\doxysubsubsection{\texorpdfstring{deleteNutrition()}{deleteNutrition()}}
+{\footnotesize\ttfamily boolean com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao.\+delete\+Nutrition (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Deletes a Nutrition object from the database by its ID. 
+
+This method deletes a Nutrition object from the database based on its unique ID. It takes an integer ID as a parameter and returns true if the deletion was successful, or false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the Nutrition object to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the deletion was successful, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1dao_1_1_nutrition_dao_imp_aee8514f822acdcb65fb6b5449459b70d}{com.\+localhost.\+nutritionfact.\+dao.\+Nutrition\+Dao\+Imp}}.
+
+\Hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ad5a8dd8f2314239e70488a91ce53ca1c}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_ad5a8dd8f2314239e70488a91ce53ca1c} 
+\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}!getAllNutritions@{getAllNutritions}}
+\index{getAllNutritions@{getAllNutritions}!com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+\doxysubsubsection{\texorpdfstring{getAllNutritions()}{getAllNutritions()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} $>$ com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao.\+get\+All\+Nutritions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves all Nutrition objects from the database. 
+
+This method retrieves all Nutrition objects stored in the database and returns them as a List. If no Nutrition objects are found, an empty List is returned.
+
+\begin{DoxyReturn}{Returns}
+A List containing all Nutrition objects stored in the database. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1dao_1_1_nutrition_dao_imp_ae525f67a0ec930754f11a47eecbb04e5}{com.\+localhost.\+nutritionfact.\+dao.\+Nutrition\+Dao\+Imp}}.
+
+\Hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a0672f396e670fc7b4ee94f5629581b39}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a0672f396e670fc7b4ee94f5629581b39} 
+\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}!getNutrition@{getNutrition}}
+\index{getNutrition@{getNutrition}!com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+\doxysubsubsection{\texorpdfstring{getNutrition()}{getNutrition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}} com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao.\+get\+Nutrition (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Retrieves a Nutrition object by its ID from the database. 
+
+This method retrieves a Nutrition object from the database based on its unique ID. It takes an integer ID as a parameter and returns the corresponding Nutrition object if found, or null if no such object exists in the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the Nutrition object to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Nutrition object with the specified ID, or null if not found. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1dao_1_1_nutrition_dao_imp_aa58f5b19c8f0731cf0c6a926d4089751}{com.\+localhost.\+nutritionfact.\+dao.\+Nutrition\+Dao\+Imp}}.
+
+\Hypertarget{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a5dfe0df515940df56bbd898018bf8cb8}\label{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao_a5dfe0df515940df56bbd898018bf8cb8} 
+\index{com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}!updateNutrition@{updateNutrition}}
+\index{updateNutrition@{updateNutrition}!com.localhost.nutritionfact.dao.INutritionDao@{com.localhost.nutritionfact.dao.INutritionDao}}
+\doxysubsubsection{\texorpdfstring{updateNutrition()}{updateNutrition()}}
+{\footnotesize\ttfamily boolean com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao.\+update\+Nutrition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1model_1_1_nutrition}{Nutrition}}}]{nutrition }\end{DoxyParamCaption})}
+
+
+
+Updates an existing Nutrition object in the database. 
+
+This method updates an existing Nutrition object in the database with new information. It takes a Nutrition object containing the updated information as a parameter and returns true if the update was successful, or false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nutrition} & The updated Nutrition object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the update was successful, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1dao_1_1_nutrition_dao_imp_a19caecb156263dc936a401771d3cceb7}{com.\+localhost.\+nutritionfact.\+dao.\+Nutrition\+Dao\+Imp}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/dao/\mbox{\hyperlink{_i_nutrition_dao_8java}{INutrition\+Dao.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,86 @@
+\doxysection{com.\+localhost.\+nutritionfact.\+db.\+Db\+Connection Class Reference}
+\hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection}{}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection}\index{com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Connection \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a9ffa148e28d3cc0f367506776db56c82}{get\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the database connection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_adc589076bd1ce8a3a79a2ec3b8b68b85}{open\+Connection}} ()  throws SQLException 
+\begin{DoxyCompactList}\small\item\em Opens a new database connection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a7ea0c17e592b227e4af53c7e1fb9d103}{close\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em Closes the database connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection}{Db\+Connection}} \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a239ffb31a11a175b5f32055cd6d4fcb5}{get\+Instance}} ()  throws SQLException 
+\begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of Db\+Connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a7ea0c17e592b227e4af53c7e1fb9d103}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a7ea0c17e592b227e4af53c7e1fb9d103} 
+\index{com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}!closeConnection@{closeConnection}}
+\index{closeConnection@{closeConnection}!com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}}
+\doxysubsubsection{\texorpdfstring{closeConnection()}{closeConnection()}}
+{\footnotesize\ttfamily void com.\+localhost.\+nutritionfact.\+db.\+Db\+Connection.\+close\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the database connection. 
+
+This method closes the database connection managed by the Db\+Connection instance. It is called when the application no longer needs to access the database or when the connection needs to be released. \Hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a9ffa148e28d3cc0f367506776db56c82}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a9ffa148e28d3cc0f367506776db56c82} 
+\index{com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}!getConnection@{getConnection}}
+\index{getConnection@{getConnection}!com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}}
+\doxysubsubsection{\texorpdfstring{getConnection()}{getConnection()}}
+{\footnotesize\ttfamily Connection com.\+localhost.\+nutritionfact.\+db.\+Db\+Connection.\+get\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the database connection. 
+
+This method returns the database connection managed by the Db\+Connection instance.
+
+\begin{DoxyReturn}{Returns}
+The database Connection object. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a239ffb31a11a175b5f32055cd6d4fcb5}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_a239ffb31a11a175b5f32055cd6d4fcb5} 
+\index{com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection}{Db\+Connection}} com.\+localhost.\+nutritionfact.\+db.\+Db\+Connection.\+get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws SQLException\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the singleton instance of Db\+Connection. 
+
+This method returns the singleton instance of the Db\+Connection class. If the instance does not exist or the existing connection is closed, a new instance is created and returned.
+
+\begin{DoxyReturn}{Returns}
+The singleton instance of the Db\+Connection class. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em SQLException} & If a SQL error occurs during database connection creation. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_adc589076bd1ce8a3a79a2ec3b8b68b85}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_connection_adc589076bd1ce8a3a79a2ec3b8b68b85} 
+\index{com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}!openConnection@{openConnection}}
+\index{openConnection@{openConnection}!com.localhost.nutritionfact.db.DbConnection@{com.localhost.nutritionfact.db.DbConnection}}
+\doxysubsubsection{\texorpdfstring{openConnection()}{openConnection()}}
+{\footnotesize\ttfamily void com.\+localhost.\+nutritionfact.\+db.\+Db\+Connection.\+open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws SQLException}
+
+
+
+Opens a new database connection. 
+
+This method opens a new database connection using the connection properties specified in the db.\+properties file. It is used to establish a connection to the database when necessary.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em SQLException} & If a SQL error occurs during database connection. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/db/\mbox{\hyperlink{_db_connection_8java}{Db\+Connection.\+java}}\end{DoxyCompactItemize}

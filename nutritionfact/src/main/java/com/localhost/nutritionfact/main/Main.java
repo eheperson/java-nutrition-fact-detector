@@ -9,9 +9,31 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @file Main.java
+ * @brief Contains the main class for the Nutrition Facts Detector System.
+ * 
+ * This class provides the main entry point for the Nutrition Facts Detector System.
+ * It presents a menu-driven interface to interact with nutrition facts, allowing
+ * users to add, read, list, update, and delete nutrition information stored in the
+ * database.
+ * 
+ * @author [Your Name]
+ * @date [Date]
+ */
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final INutritionDao nutritionDao = new NutritionDaoImp();
+    
+    /**
+     * @brief Main method to start the Nutrition Facts Detector System.
+     * 
+     * This method initializes the database schema using the DbInit class, then enters
+     * a loop to present a menu-driven interface for interacting with the system. The
+     * user can choose various options such as adding, reading, updating, listing, and
+     * deleting nutrition facts. The loop continues until the user chooses to exit the
+     * system.
+     */
     public static void main(String[] args) {
         DbInit.initializeDatabase();
 

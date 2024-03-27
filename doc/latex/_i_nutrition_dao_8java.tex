@@ -1,0 +1,44 @@
+\doxysection{java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/dao/\+INutrition\+Dao.java File Reference}
+\hypertarget{_i_nutrition_dao_8java}{}\label{_i_nutrition_dao_8java}\index{java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/dao/INutritionDao.java@{java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/dao/INutritionDao.java}}
+
+
+Interface for performing CRUD operations on Nutrition objects in the database.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1localhost_1_1nutritionfact_1_1dao_1_1_i_nutrition_dao}{com.\+localhost.\+nutritionfact.\+dao.\+INutrition\+Dao}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Packages}
+\begin{DoxyCompactItemize}
+\item 
+package \mbox{\hyperlink{namespacecom_1_1localhost_1_1nutritionfact_1_1dao}{com.\+localhost.\+nutritionfact.\+dao}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for performing CRUD operations on Nutrition objects in the database. 
+
+This interface defines methods for performing CRUD (Create, Read, Update, Delete) operations on Nutrition objects stored in the database. Implementing classes are responsible for providing concrete implementations of these methods to interact with the underlying database.
+
+Each method corresponds to a specific database operation\+:
+\begin{DoxyItemize}
+\item add\+Nutrition() inserts a new Nutrition object into the database.
+\item get\+Nutrition() retrieves a Nutrition object by its ID from the database.
+\item get\+All\+Nutritions() retrieves all Nutrition objects stored in the database.
+\item update\+Nutrition() updates an existing Nutrition object in the database.
+\item delete\+Nutrition() deletes a Nutrition object from the database by its ID.
+\end{DoxyItemize}
+
+Implementing classes should handle database connectivity, SQL queries, and error handling according to the requirements of the underlying database system. They should ensure proper resource management and error reporting to maintain the integrity and reliability of database operations.
+
+\begin{DoxyNote}{Note}
+Implementing classes should adhere to the contract defined by this interface, ensuring consistent behavior across different implementations while interacting with Nutrition objects in the database.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+\mbox{[}Your Name\mbox{]} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\mbox{[}Date\mbox{]} 
+\end{DoxyDate}

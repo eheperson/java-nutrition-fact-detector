@@ -1,0 +1,30 @@
+\doxysection{com.\+localhost.\+nutritionfact.\+db.\+Db\+Init Class Reference}
+\hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_init}{}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_init}\index{com.localhost.nutritionfact.db.DbInit@{com.localhost.nutritionfact.db.DbInit}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_init_a340144edf9ee71724e1e5dcebc0a2d02}{initialize\+Database}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the database schema using the SQL script file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_init_a340144edf9ee71724e1e5dcebc0a2d02}\label{classcom_1_1localhost_1_1nutritionfact_1_1db_1_1_db_init_a340144edf9ee71724e1e5dcebc0a2d02} 
+\index{com.localhost.nutritionfact.db.DbInit@{com.localhost.nutritionfact.db.DbInit}!initializeDatabase@{initializeDatabase}}
+\index{initializeDatabase@{initializeDatabase}!com.localhost.nutritionfact.db.DbInit@{com.localhost.nutritionfact.db.DbInit}}
+\doxysubsubsection{\texorpdfstring{initializeDatabase()}{initializeDatabase()}}
+{\footnotesize\ttfamily static void com.\+localhost.\+nutritionfact.\+db.\+Db\+Init.\+initialize\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes the database schema using the SQL script file. 
+
+This method initializes the database schema by loading the SQL script file containing the schema definition and executing the SQL commands. The path to the SQL script file is relative to the {\ttfamily src/main/resources/} directory and is defined as {\ttfamily db/schema.\+sql}.
+
+\begin{DoxyPostcond}{Postcondition}
+If the SQL script file is successfully loaded and contains non-\/empty SQL commands, the database schema is initialized with the tables and schema specified in the script. If an error occurs during SQL script loading or execution, the database may not be properly initialized, and an error message may be printed to the console. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+java-\/nutrition-\/fact-\/detector/nutritionfact/src/main/java/com/localhost/nutritionfact/db/\mbox{\hyperlink{_db_init_8java}{Db\+Init.\+java}}\end{DoxyCompactItemize}
