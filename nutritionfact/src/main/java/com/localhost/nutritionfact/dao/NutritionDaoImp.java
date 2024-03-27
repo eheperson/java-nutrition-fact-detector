@@ -10,7 +10,7 @@ import java.util.List;
 public class NutritionDaoImp implements INutritionDao {
 
     @Override
-    public void addNutrition(Nutrition nutrition) {
+    public boolean addNutrition(Nutrition nutrition) {
         String sql = "INSERT INTO nutrition (title, description, source_type, source_details) VALUES (?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -21,9 +21,11 @@ public class NutritionDaoImp implements INutritionDao {
             pstmt.setString(2, nutrition.getDescription());
             pstmt.setString(3, nutrition.getSourceType());
             pstmt.setString(4, nutrition.getSourceDetails());
-            pstmt.executeUpdate();
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return false;
         } finally {
             close(conn, pstmt, null);
         }

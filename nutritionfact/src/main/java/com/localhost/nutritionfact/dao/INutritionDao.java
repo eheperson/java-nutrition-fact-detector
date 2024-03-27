@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface INutritionDao {
     // Adds a new Nutrition object to the database
-    void addNutrition(Nutrition nutrition);
+    boolean addNutrition(Nutrition nutrition);
 
     // Retrieves a Nutrition object by its ID
     Nutrition getNutrition(int id);
