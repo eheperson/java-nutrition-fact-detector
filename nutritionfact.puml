@@ -53,19 +53,19 @@ package "com.localhost.nutritionfact.main" {
 }
 
 interface "INutritionDao" {
-    +addNutrition(nutrition: Nutrition): void
+    +addNutrition(nutrition: Nutrition): boolean
     +getNutrition(id: int): Nutrition
     +getAllNutritions(): List<Nutrition>
-    +updateNutrition(nutrition: Nutrition): void
-    +deleteNutrition(id: int): void
+    +updateNutrition(nutrition: Nutrition): boolean
+    +deleteNutrition(id: int): boolean
 }
 
 class "NutritionDaoImp" {
-    +addNutrition(nutrition: Nutrition): void
+    +addNutrition(nutrition: Nutrition): boolean
     +getNutrition(id: int): Nutrition
     +getAllNutritions(): List<Nutrition>
-    +updateNutrition(nutrition: Nutrition): void
-    +deleteNutrition(id: int): void
+    +updateNutrition(nutrition: Nutrition): boolean
+    +deleteNutrition(id: int):  boolean
 }
 
 Main --> Nutrition
