@@ -5,6 +5,7 @@ import com.localhost.nutritionfact.dao.NutritionDaoImp;
 import com.localhost.nutritionfact.dao.INutritionDao;
 import com.localhost.nutritionfact.model.Nutrition;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,7 +53,9 @@ public class Main {
     }
 
     private static void addNutrition() {
-        Nutrition nutrition = getNutritionDetailsFromUser();
+        System.out.println("\n[Add a nutrition fact]");
+        System.out.print("Enter Nutrition Info: \n");
+        Nutrition nutrition = getNutritionDetailsFromUser(0);
         nutritionDao.addNutrition(nutrition);
         System.out.println("Nutrition fact added successfully!");
     }
@@ -81,20 +84,12 @@ public class Main {
     }
 
     private static void updateNutrition() {
-        System.out.println("\n[Update a nutrition fact]");
+        System.out.println("\n[Update a nutrition fact]\n");
         System.out.print("Enter Nutrition ID: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // consume newline
-        System.out.print("New Title: ");
-        String title = scanner.nextLine();
-        System.out.print("New Description: ");
-        String description = scanner.nextLine();
-        System.out.print("New Source Type (Video, BlogArticle, MedicalInfo): ");
-        String sourceType = scanner.nextLine();
-        System.out.print("New Source Details: ");
-        String sourceDetails = scanner.nextLine();
-
-        Nutrition nutrition = new Nutrition(id, title, description, sourceType, sourceDetails);
+        scanner.nextLine();
+        System.out.print("Enter New Nutrition Info: \n");
+        Nutrition nutrition = getNutritionDetailsFromUser(id);
         nutritionDao.updateNutrition(nutrition);
         System.out.println("Nutrition fact updated successfully!");
     }
@@ -107,15 +102,19 @@ public class Main {
         System.out.println("Nutrition fact deleted successfully.");
     }
 
-    private static Nutrition getNutritionDetailsFromUser() {
+    private static Nutrition getNutritionDetailsFromUser(int nutritionId) {
         System.out.print("Title: ");
         String title = scanner.nextLine();
         System.out.print("Description: ");
         String description = scanner.nextLine();
-        System.out.print("Source Type (Video, BlogArticle, MedicalInfo): ");
+        System.out.print("Source Type, Only:[Video, BlogArticle, MedicalInfo]: ");
         String sourceType = scanner.nextLine();
+        List<String> allowedTypes = Arrays.asList("Video", "MedicalInfo", "BlogArticle");
+        if (!allowedTypes.contains(sourceType)) {
+            throw new IllegalArgumentException("Invalid source type. Allowed types are: Video, MedicalInfo, BlogArticle.");
+        }
         System.out.print("Source Details: ");
         String sourceDetails = scanner.nextLine();
-        return new Nutrition(0, title, description, sourceType, sourceDetails);
+        return new Nutrition(nutritionId, title, description, sourceType, sourceDetails);
     }
 }
